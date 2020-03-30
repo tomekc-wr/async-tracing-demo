@@ -22,7 +22,7 @@ public class KafkaStuff {
     public Consumer<KStream<String, SomeBody>> someConsumer(FooService fooService) {
         return (someBody -> {
             someBody
-                    .transformValues(kafkaStreamsTracing.peek("foo_span", (key, value) -> {
+                    .foreach((k, v) -> kafkaStreamsTracing.peek("foo_span", (key, value) -> {
                         log.info("Hello from inside of Kafka stream");
                         try {
                             fooService.doSomethingSync();
@@ -30,16 +30,7 @@ public class KafkaStuff {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                    }))
-                    .foreach((k, v) -> {
-                        log.info("Hello from Kafka Streams consumer tid : " + Thread.currentThread().getId());
-                        try {
-                            fooService.doSomethingSync();
-                            fooService.doSomethingAsynchronous("");
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    });
+                    }));
         });
     }
 }
