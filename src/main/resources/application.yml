@@ -1,5 +1,9 @@
 remit.kafka.brokers: localhost:9093
 spring:
+  sleuth:
+    scheduled:
+      enabled: true
+
   application:
     name: tracingdemo
   cloud:

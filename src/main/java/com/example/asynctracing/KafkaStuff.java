@@ -18,6 +18,7 @@ public class KafkaStuff {
             log.info("Hello from consumer tid : " + Thread.currentThread().getId());
             try {
                 fooService.doSomethingAsynchronous();
+                fooService.doCompAsync();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
