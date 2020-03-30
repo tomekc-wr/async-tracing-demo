@@ -10,6 +10,9 @@ spring:
         someConsumer-in-0:
           destination: tests.topic1
       kafka:
+        streams:
+          binder:
+            brokers: ${remit.kafka.brokers}
         binder:
           brokers: ${remit.kafka.brokers}
 

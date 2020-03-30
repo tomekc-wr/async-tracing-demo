@@ -16,4 +16,8 @@ public class FooService {
         log.info("Hello from async method tid : " + Thread.currentThread().getId());
     }
 
+    public void doSomethingSync() throws InterruptedException {
+        log.info("Hello from sync method tid : " + Thread.currentThread().getId());
+    }
+
 }
