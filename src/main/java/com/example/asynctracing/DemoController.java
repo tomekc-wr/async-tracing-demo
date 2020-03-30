@@ -21,7 +21,7 @@ public class DemoController {
     @GetMapping
     public String foo() throws InterruptedException {
         log.info("Hello from controller tid : " + Thread.currentThread().getId());
-        fooService.doSomethingAsynchronous();
+        fooService.doSomethingAsynchronous("");
         return "Hello";
     }
 
