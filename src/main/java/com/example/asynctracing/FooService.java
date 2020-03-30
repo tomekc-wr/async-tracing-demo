@@ -11,8 +11,9 @@ public class FooService {
     Logger log = LoggerFactory.getLogger(FooService.class);
 
     @Async
-    public void doSomethingAsynchronous() {
-        log.info("Hello from async method");
+    public void doSomethingAsynchronous() throws InterruptedException {
+        Thread.sleep(1000);
+        log.info("Hello from async method tid : " + Thread.currentThread().getId());
     }
 
 }
