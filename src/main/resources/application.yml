@@ -1,0 +1,20 @@
+remit.kafka.brokers: localhost:9093
+spring:
+  application:
+    name: tracingdemo
+  cloud:
+    stream:
+      function:
+        definition: someConsumer
+      bindings:
+        someConsumer-in-0:
+          destination: tests.topic1
+      kafka:
+        streams:
+          binder:
+            brokers: ${remit.kafka.brokers}
+        binder:
+          brokers: ${remit.kafka.brokers}
+
+server:
+  port: 8081
